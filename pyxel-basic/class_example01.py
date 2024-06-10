@@ -4,7 +4,6 @@ pyxelの基本を学ぶためのサンプルコード
 矢印キーで円を動かすだけの簡単なプログラムですが、pyxelの基本的な使い方がわかります。
 simple_example01.py と同じロジックですが、classを用いた書き方に変更しています。
 """
-
 import pyxel
 
 # "Game" という名前のclassを定義しています。
@@ -20,30 +19,24 @@ class Game:
         self.y = 60
         
         # pyxelの更新処理と描画処理をこのクラスのメソッドとして定義します。
-        pyxel.run(self.update, self.draw)
+        pyxel.run(self.update, self.draw) #なぜselfが必要なのかというと、クラス内で定義されたメソッドを呼び出す際には、selfをつける必要があるからです。
 
     # ゲームの状態を更新するメソッドです。
     def update(self):
         # 矢印キーに応じて円の座標を更新します。
         if pyxel.btn(pyxel.KEY_UP):
-            # 上矢印キーで上に移動します。
-            self.y -= 2
+            self.y -= 2 # 上矢印キーで上に移動します。
         if pyxel.btn(pyxel.KEY_DOWN):
-            # 下矢印キーで下に移動します。
-            self.y += 2
+            self.y += 2 # 下矢印キーで下に移動します。
         if pyxel.btn(pyxel.KEY_LEFT):
-            # 左矢印キーで左に移動します。
-            self.x -= 2
+            self.x -= 2 # 左矢印キーで左に移動します。
         if pyxel.btn(pyxel.KEY_RIGHT):
-            # 右矢印キーで右に移動します。
-            self.x += 2
+            self.x += 2 # 右矢印キーで右に移動します。
 
     # ゲームの描画を行うメソッドです。
     def draw(self):
-        # 画面を黒でクリアします。
-        pyxel.cls(0)
-        # (x, y)座標に半径10, 色7（赤色）の円を描画します。
-        pyxel.circ(self.x, self.y, 10, 7)
+        pyxel.cls(0) # 画面を黒でクリアします。
+        pyxel.circ(self.x, self.y, 10, 7) # (x, y)座標に半径10, 色7（赤色）の円を描画
 
 # Gameクラスのインスタンスを作成してゲームを開始します。
 Game()
