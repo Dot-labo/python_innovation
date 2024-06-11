@@ -8,12 +8,12 @@
 class Wizard:
     pass
 
-# "Wizard"クラスのインスタンス "wizard1" を生成
+# "Wizard"クラスのインスタンス "wizard_1" を生成
 # クラスからインスタンス(実体)を作る時は、インスタンスの名前 = クラス名() というふうに書きます。
 wizard_1 = Wizard()
 
 # インスタンス「wizard_1」にメンバ変数を追加
-wizard_1.name = 'マーリン'
+wizard_1.name = 'マーリン' #マーリンとは、アーサー王物語に登場する魔法使いの名前です。
 wizard_1.hp = 14
 wizard_1.mp = 27
 wizard_1.magic_list = ['Fireball', 'Ice Storm', 'Lightning Bolt']
