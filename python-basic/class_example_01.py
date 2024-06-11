@@ -8,19 +8,19 @@
 class Wizard:
     pass
 
-# "Wizard"クラスのインスタンス "wizard" を生成
+# "Wizard"クラスのインスタンス "wizard1" を生成
 # クラスからインスタンス(実体)を作る時は、インスタンスの名前 = クラス名() というふうに書きます。
-wizard = Wizard()
+wizard_1 = Wizard()
 
-# インスタンス「wizard」にインスタンス変数を追加
-wizard.name = 'マーリン'
-wizard.hp = 14
-wizard.mp = 27
-wizard.magic_list = ['Fireball', 'Ice Storm', 'Lightning Bolt']
+# インスタンス「wizard_1」にメンバ変数を追加
+wizard_1.name = 'マーリン'
+wizard_1.hp = 14
+wizard_1.mp = 27
+wizard_1.magic_list = ['Fireball', 'Ice Storm', 'Lightning Bolt']
 
-# インスタンス「wizard」のインスタンス変数を表示
-# インスタンス変数を表示する際には、「インスタンス名.メンバ変数名」と書く
-print("私は", wizard.name)
-print("HPは", wizard.hp)
-print("MPは", wizard.mp)
-print("覚えている魔法は", wizard.magic_list)
+# インスタンス「wizard」のメンバ変数を表示
+# メンバ変数を表示する際には、「インスタンス名.メンバ変数名」と書く
+print("私は", wizard_1.name)
+print("HPは", wizard_1.hp)
+print("MPは", wizard_1.mp)
+print("覚えている魔法は", wizard_1.magic_list)
