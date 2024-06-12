@@ -43,7 +43,7 @@ def update():
     if pyxel.btn(pyxel.KEY_A):
         rect_x -= 2
     if pyxel.btn(pyxel.KEY_D):
-        rect_y += 2
+        rect_x += 2
 
 # 描画関数 ここに書いた処理によって画面が描画されます。
 def draw():
