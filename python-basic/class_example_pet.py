@@ -6,7 +6,7 @@
 #クラスには、animal_typeというメンバ変数を持たせましょう。
 class Pet:
     def __init__(self, ???):
-        self.???
+        self.??? = ???
 
 #Petクラスのインスタンスp1とp2を作りましょう。
 #p1のanimal_typeは 'イヌ' で、p2のanimal_typeは 'サル' です。
