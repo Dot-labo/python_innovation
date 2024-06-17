@@ -18,8 +18,8 @@ class Game:
         self.x = 80
         self.y = 60
         
-        # pyxelの更新処理と描画処理をこのクラスのメソッドとして定義します。
-        pyxel.run(self.update, self.draw) #なぜselfが必要なのかというと、クラス内で定義されたメソッドを呼び出す際には、selfをつける必要があるからです。
+        #pyxel.run()関数に、このクラスのメンバ関数 "update" と "draw"を渡しています。
+        pyxel.run(self.update, self.draw) #自分自身の持つメンバ関数にアクセスする際は、selfを忘れないようにしましょう。
 
     # ゲームの状態を更新するメソッドです。
     def update(self):
