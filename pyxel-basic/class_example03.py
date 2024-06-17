@@ -1,13 +1,15 @@
 """
 classを使ったpyxelの基本を学ぶためのサンプルコード2
 
-class_example01.py と同じロジックですが、Gameクラスの他にCircleクラスを定義しています。
 Gameクラスはゲームの情報を管理するためのクラスで、Circleクラスは円の情報を管理するためのクラスです。
+このようにゲームのロジックを管理するクラスト、ゲームに登場するモノのクラスで分けることで、
+ゲームの内容を変更しやすくなります。
 様々な色や形の円を表示して、ランダムに動かしてみましょう。
 """
 import pyxel
 import random
 
+# Circleクラスの実装は前の例(class_example02.py)と全く変更していません。
 class Circle:
     def __init__(self, x, y, r, color):
         # 位置(x, y)、半径r、色color を決めれば、円が持つ情報を表現できます。
@@ -26,13 +28,13 @@ class Circle:
         pyxel.circ(self.x, self.y, self.r, self.color)
 
 
-# "Game" という名前のclassを定義しています。
-# これは、ゲーム全体を管理するためのクラスです。
-# ゲーム全体の設計図を用意しているイメージです。
+# - 円をたくさん作成する
+# - 円はランダムに動かす
+# という風に実装を変更しています。
 class Game:
     def __init__(self):
 
-        self.circle_list = []
+        self.circle_list = [] #たくさんの円を管理するためのリストです。
         for i in range(30):
             x = random.randint(0, 160)
             y = random.randint(0, 120)
