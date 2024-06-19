@@ -13,49 +13,46 @@ import pyxel
 # これは、１つの円が持つ情報や動きを表現するためのclassです。
 # ここでは、円の設計図を用意しているイメージです。
 class Circle:
-    def __init__(self, x, y, r, color):
-        # 位置(x, y)、半径r、色color を決めれば、円が持つ情報を表現できます。
+    def __init__(self, x, y, r, color, speed):
+        # 位置(x, y)、半径(r)、色(color),スピード(speed) を決めれば、円が持つ情報を表現できます。
         self.x = x
         self.y = y
         self.r = r
         self.color = color
+        self.speed = speed
 
     # 円を移動させるメソッドです。
-    def move(self, dx, dy):
-        self.x += dx
-        self.y += dy
+    # キー入力を取得して自分自身を移動(self.x, self.yを更新)しています。
+    def get_key_and_move(self):
+        if pyxel.btn(pyxel.KEY_RIGHT):
+            self.x += self.speed
+        if pyxel.btn(pyxel.KEY_LEFT):
+            self.x -= self.speed
+        if pyxel.btn(pyxel.KEY_UP):
+            self.y -= self.speed
+        if pyxel.btn(pyxel.KEY_DOWN):
+            self.y += self.speed
     
     # 円(自分自身)を描画するメソッドです。
     def draw(self):
         pyxel.circ(self.x, self.y, self.r, self.color)
 
-# "Game" という名前のclassを定義しています。
-# これは、ゲーム全体を管理するためのクラスです。
-# ゲーム全体の設計図を用意しているイメージです。
+# 円を表現するクラスがゲームのクラスとは別に定義されています。
+# そのためゲームのロジックだけがこのクラスに残っています。
+# ゲームのロジックの中で、Circle クラスのインスタンスを作成して利用しています。
 class Game:
     def __init__(self):
-        self.my_circle = Circle(80, 60, 10, 7) #Circleクラスのインスタンス(実体)を, 'my_circle' という名前で作成します。
+        self.my_circle = Circle(x=80, y=60, r=10, color=7, speed=2) #Circleクラスのインスタンス(実体)を, 'my_circle' という名前で作成します。
         pyxel.init(160, 120, title="Hello Pyxel") #ウィンドウを初期化します。
-        # pyxelの更新処理と描画処理をこのクラスのメソッドとして定義します。
-        pyxel.run(self.update, self.draw)
+        pyxel.run(self.update, self.draw) #ゲームを実行します。
 
-    # ゲームの状態を更新するメソッドです。
-    #ここでは、Circleクラスが持つmoveメソッドを呼ぶことで、円を動かしています。
     def update(self):
-        if pyxel.btn(pyxel.KEY_UP):
-            self.my_circle.move(0, -2)
-        if pyxel.btn(pyxel.KEY_DOWN):
-            self.my_circle.move(0, 2)
-        if pyxel.btn(pyxel.KEY_LEFT):
-            self.my_circle.move(-2, 0)
-        if pyxel.btn(pyxel.KEY_RIGHT):
-            self.my_circle.move(2, 0)
+        self.my_circle.get_key_and_move() #self.my_circleが持つメンバ関数`get_key_and_move`を実行しています。
 
     # ゲームの描画を行うメソッドです。
     def draw(self):
-        pyxel.cls(0) # 画面を黒でクリアします。
-        # my_circleを実際に描画します。
-        self.my_circle.draw()
+        pyxel.cls(0) #画面を黒く塗りつぶします。
+        self.my_circle.draw() #my_circleを実際に描画します。
 
 # Gameクラスのインスタンスを作成してゲームを開始します。
 Game()
